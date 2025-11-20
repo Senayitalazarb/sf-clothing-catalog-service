@@ -8,6 +8,7 @@ import product.model.Product;
 import product.repository.ProductRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -30,7 +31,7 @@ public class ProductService {
         }
     }
 
-    public ProductResponseDto getProductById( int id){
-        return productRepository.findById(id).map(ProductMapper::toDto).orElse(null);
+    public Optional<ProductResponseDto> getProductById(int id){
+        return productRepository.findById(id).map(ProductMapper::toDto);
     }
 }
